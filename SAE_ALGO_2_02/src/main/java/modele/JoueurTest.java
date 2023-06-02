@@ -95,6 +95,14 @@ class JoueurTest {
      Méthode de test de la méthode getDureeJ de la classe Joueur.
      */
     void getDureeJ() {
+        int attendu = 7;
+        Joueur j = new Joueur();
+        j.ajoutDuree(7);
+        assertEquals(attendu,j.getDureeJ());
+
+        int attendu1 = 0;
+        Joueur j1 = new Joueur();
+        assertEquals(attendu1, j1.getDureeJ());
     }
 
     @org.junit.jupiter.api.Test
