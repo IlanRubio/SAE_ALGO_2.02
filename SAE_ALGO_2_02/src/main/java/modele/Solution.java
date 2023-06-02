@@ -16,7 +16,8 @@ public class Solution {
      * @param parJoueur   Le joueur associé à la solution.
      */
     public Solution(Scenario parScenario, Joueur parJoueur) {
-
+        this.chScenario = parScenario;
+        this.chJoueur = parJoueur;
     }
 
     /**
