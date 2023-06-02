@@ -34,6 +34,12 @@ class JoueurTest {
      Méthode de test de la méthode majPosition de la classe Joueur.
      */
     void majPosition() {
+        int [] attendu = new int[2];
+        attendu[0] = 3;
+        attendu[1] = 1;
+        Joueur j = new Joueur();
+        j.majPosition(attendu);
+        assertArrayEquals(attendu, j.getPosJ());
     }
 
 
