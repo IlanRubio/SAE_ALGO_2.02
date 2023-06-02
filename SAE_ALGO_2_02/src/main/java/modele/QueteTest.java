@@ -2,6 +2,7 @@ package modele;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /**
  * La classe QueteTest permet de tester la classe Quete
