@@ -12,7 +12,10 @@ class JoueurTest {
      Méthode de test de la méthode ajoutExp de la classe Joueur.
      */
     void ajoutExp() {
-
+        int attendu = 5;
+        Joueur j = new Joueur();
+        j.ajoutExp(5);
+        assertEquals(attendu,j.getExpJ());
     }
 
     @org.junit.jupiter.api.Test
