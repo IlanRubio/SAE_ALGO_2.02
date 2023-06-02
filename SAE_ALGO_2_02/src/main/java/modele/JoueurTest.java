@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -48,6 +50,12 @@ class JoueurTest {
      Méthode de test de la méthode ajoutQuete de la classe Joueur.
      */
     void ajoutQuete() {
+        Quete quete = new Quete("1|(3, 1)|((10,5), (2, 8))|2|50|dialoguer avec Alaric le mage noir");
+        Joueur j = new Joueur();
+        ArrayList<Quete> listeQAttendu = new ArrayList<Quete>();
+        listeQAttendu.add(quete);
+        j.ajoutQuete(quete);
+        assertEquals(listeQAttendu,j.getQueteAcc());
     }
 
     @org.junit.jupiter.api.Test
