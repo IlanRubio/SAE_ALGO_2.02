@@ -110,5 +110,17 @@ class JoueurTest {
      Méthode de test de la méthode getQueteAcc de la classe Joueur.
      */
     void getQueteAcc() {
+        Quete quete = new Quete("1|(3, 1)|((10,5), (2, 8))|2|50|dialoguer avec Alaric le mage noir");
+        Joueur j = new Joueur();
+        ArrayList<Quete> listeQAttendu = new ArrayList<Quete>();
+        listeQAttendu.add(quete);
+        j.ajoutQuete(quete);
+        assertEquals(listeQAttendu,j.getQueteAcc());
+
+
+        Joueur j1 = new Joueur();
+        ArrayList<Quete> listeQAttendu1 = new ArrayList<Quete>();
+        listeQAttendu.add(quete);
+        assertEquals(listeQAttendu1,j1.getQueteAcc());
     }
 }
