@@ -66,8 +66,8 @@ class JoueurTest {
         int [] attendu = new int [2];
         Joueur j = new Joueur();
         assertArrayEquals(attendu, j.getPosJ());
-        int [] attendu1 = new int [2];
 
+        int [] attendu1 = new int [2];
         attendu1[0] = 3;
         attendu1[1] = 1;
         Joueur j1 = new Joueur();
@@ -80,6 +80,14 @@ class JoueurTest {
      Méthode de test de la méthode getExpJ de la classe Joueur.
      */
     void getExpJ() {
+        int attendu = 5;
+        Joueur j = new Joueur();
+        j.ajoutExp(5);
+        assertEquals(attendu,j.getExpJ());
+
+        int attendu1 = 0;
+        Joueur j1 = new Joueur();
+        assertEquals(attendu1, j1.getExpJ());
     }
 
     @org.junit.jupiter.api.Test
