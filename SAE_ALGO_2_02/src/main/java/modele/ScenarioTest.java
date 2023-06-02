@@ -27,5 +27,9 @@ class ScenarioTest {
      Méthode de test de la méthode getQuete de la classe Scenario.
      */
     void getQuete() {
+        Scenario scenarioAttendu = new Scenario();
+        Quete objet = new Quete("1|(3, 1)|()|2|50|dialoguer avec Alaric le mage noir");
+        scenarioAttendu.ajoutQuete(objet);
+        assertEquals(scenarioAttendu.getQuete(1),objet);
     }
 }
