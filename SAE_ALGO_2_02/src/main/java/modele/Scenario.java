@@ -47,5 +47,14 @@ public class Scenario {
     public Quete getQuete(int parNumQuete) {
         return chTreeMapQuete.get(parNumQuete);
     }
+    /**
+     * Retourne le scenario.
+     *
+     * @param
+     * @return Le scenario.
+     */
+    public TreeMap<Integer, Quete> getScenario() {
+        return chTreeMapQuete;
+    }
 }
 
