@@ -23,6 +23,10 @@ class JoueurTest {
      Méthode de test de la méthode ajoutDuree de la classe Joueur.
      */
     void ajoutDuree() {
+        int attendu = 7;
+        Joueur j = new Joueur();
+        j.ajoutDuree(7);
+        assertEquals(attendu,j.getDureeJ());
     }
 
     @org.junit.jupiter.api.Test
