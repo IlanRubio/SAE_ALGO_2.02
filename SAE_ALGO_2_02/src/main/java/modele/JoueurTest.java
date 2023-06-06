@@ -123,4 +123,20 @@ class JoueurTest {
         listeQAttendu.add(quete);
         assertEquals(listeQAttendu1,j1.getQueteAcc());
     }
+
+    @org.junit.jupiter.api.Test
+    /**
+     Méthode de test de la méthode queteCompletee de la classe Joueur.
+     */
+    void queteCompletee() {
+
+        Quete quete1 = new Quete("1|(4, 3)|()|2|100|explorer pic de Bhanborim");
+        Joueur j = new Joueur();
+        j.ajoutQuete(quete1);
+        Quete quete2 = new Quete("2|(3, 1)|((1,),)|1|150|dialoguer avec Kaela la chaman des esprits");
+        assertEquals(false,j.queteCompletee(quete2));
+
+        j.ajoutQuete(quete2);
+        assertEquals(true,j.queteCompletee(quete2));
+    }
 }
