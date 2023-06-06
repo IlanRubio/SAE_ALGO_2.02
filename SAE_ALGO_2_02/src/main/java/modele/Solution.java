@@ -137,11 +137,49 @@ public class Solution {
     /**
      * Effectue une recherche exhaustive pour compléter toutes les quetes possibles.
      *
-     * @return Une liste d'entiers représentant toutes les quetes à réaliser et dans quel ordre.
      */
-    public ArrayList<Integer> exhaustive() {
-        return null;
-    }
+    public void exhaustive() {
+        while(!chQueteFinal){
+            HashMap<Integer, Integer> quetePossible = new HashMap<Integer, Integer>();
+            // Parcours les quêtes du scénario dans l'ordre croissant de leurs numéros
+            for (Quete quete : chScenario.getScenario().values()) {
+                if (!chJoueur.getQueteAcc().contains(quete)) {
+                    if (preconditionRealise(chJoueur, quete)) {
+                        if (quete.getNumero() == 0 && chScenario.getNombreQuetes() - chJoueur.getQueteAcc().size()==1) {
+                            chQueteFinal = true;
+                            chJoueur.ajoutQuete(quete);
+                            chJoueur.ajoutDuree(quete.getDuree() + calculerDistance(chJoueur.getPosJ(), quete.getPos()));
+                            break;
+                        } else if (quete.getNumero() != 0) {
+                            quetePossible.put(quete.getNumero(), calculerDistance(chJoueur.getPosJ(), quete.getPos()));
+                        }
+                    }
+                }
+            }
+
+            Integer queteMin = 0;
+            int distanceMin = Integer.MAX_VALUE;
+            ;
+
+            // Boucle for pour parcourir les clés du dictionnaire
+            for (Integer quete : quetePossible.keySet()) {
+                int distance = quetePossible.get(quete);
+
+                // Vérifier si la valeur actuelle est inférieure à la valeur minimale
+                if (distance < distanceMin) {
+                    distanceMin = distance;
+                    queteMin = quete;
+                }
+            }
+            if (queteMin != 0) {
+                chJoueur.ajoutQuete(chScenario.getQuete(queteMin));
+                chJoueur.ajoutDuree(chScenario.getQuete(queteMin).getDuree() + distanceMin);
+                chJoueur.ajoutExp(chScenario.getQuete(queteMin).getExp());
+                chJoueur.majPosition(chScenario.getQuete(queteMin).getPos());
+            }
+        }
+        }
+
 
     /**
      * Effectue une recherche optimisée pour trouver la solution la plus rapide.
