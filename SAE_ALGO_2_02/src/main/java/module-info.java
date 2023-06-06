@@ -6,4 +6,5 @@ module com.example.sae_algo_2_02 {
     opens com.example.sae_algo_2_02 to javafx.fxml;
     exports com.example.sae_algo_2_02;
     exports modele;
+    exports vue;
 }
