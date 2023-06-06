@@ -27,21 +27,24 @@ public class VBoxAffichageSolution extends VBox {
      */
     public VBoxAffichageSolution(ArrayList<Quete> parQueteAcc){
         TableColumn<Quete, Integer> numColumn = new TableColumn<>("Numéro");
-        numColumn.setCellValueFactory(new PropertyValueFactory<>("chNumero"));
+        numColumn.setCellValueFactory(new PropertyValueFactory<>("Numero"));
 
         TableColumn <Quete, String> intituleColumn = new TableColumn<>("Intitule");
-        intituleColumn.setCellValueFactory(new PropertyValueFactory<>("chIntitule"));
+        intituleColumn.setCellValueFactory(new PropertyValueFactory<>("Intitule"));
 
         TableColumn <Quete, Integer> expColumn = new TableColumn<>("Expérience");
-        expColumn.setCellValueFactory(new PropertyValueFactory<>("chExp"));
+        expColumn.setCellValueFactory(new PropertyValueFactory<>("ExpAsString"));
 
         TableColumn <Quete, Integer> dureeColumn = new TableColumn<>("Durée");
-        dureeColumn.setCellValueFactory(new PropertyValueFactory<>("chDuree"));
-        chTable.getColumns().addAll(numColumn,intituleColumn,expColumn,dureeColumn);
+        dureeColumn.setCellValueFactory(new PropertyValueFactory<>("Duree"));
 
-        chTable.setPrefSize(320,290);
+        TableColumn<Quete, String> preconditionCol = new TableColumn<>("Precondition");
+        preconditionCol.setCellValueFactory(new PropertyValueFactory<>("PrecondAsString"));
+        chTable.getColumns().addAll(numColumn,intituleColumn,expColumn,dureeColumn, preconditionCol);
+
+        chTable.setPrefSize(550,500);
         getChildren().addAll(chLabSolution,chTable);
-        update(parQueteAcc);
+        updateSolution(parQueteAcc);
     }
 
     /**
@@ -49,7 +52,7 @@ public class VBoxAffichageSolution extends VBox {
      *
      * @param parQuetes la liste des quetes de la solution
      */
-    public void update (ArrayList <Quete> parQuetes){
+    public void updateSolution (ArrayList <Quete> parQuetes){
         chTable.getItems().clear();
         for (Quete quete : parQuetes){
             chTable.getItems().add(quete);
