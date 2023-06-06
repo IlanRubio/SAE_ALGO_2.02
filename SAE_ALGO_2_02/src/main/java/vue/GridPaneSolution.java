@@ -5,6 +5,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import static modele.ConstanteScenario.SCENARIO;
 import static modele.ConstanteScenario.SOLUTION;
 
@@ -58,6 +61,8 @@ public class GridPaneSolution extends GridPane {
         this.add(buttonAnnuler,2,ligne,2,1);
         Button buttonGenerer = new Button("Generer");
         this.add(buttonGenerer,4,ligne);
+        reset();
+
     }
 
     /**
@@ -72,5 +77,10 @@ public class GridPaneSolution extends GridPane {
             comboBox.getItems().add(string);
         }
         return comboBox;
+    }
+
+    public void reset(){
+        chRadioGroup.getToggles().get(0).setSelected(true);
+        chChoixScenario.setValue(SCENARIO[0]);
     }
 }
