@@ -1,5 +1,7 @@
 package vue;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -61,6 +63,14 @@ public class GridPaneSolution extends GridPane {
         this.add(buttonAnnuler,2,ligne,2,1);
         Button buttonGenerer = new Button("Generer");
         this.add(buttonGenerer,4,ligne);
+
+        buttonGenerer.setOnAction(HBoxRoot.getChControleur());
+        buttonAnnuler.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                reset();
+            }
+        });
         reset();
 
     }
