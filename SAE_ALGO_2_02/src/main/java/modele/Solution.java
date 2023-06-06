@@ -80,7 +80,7 @@ public class Solution {
     private int calculerDistance(int[] pos1, int[] pos2) {
         int dx = pos2[0] - pos1[0];
         int dy = pos2[1] - pos1[1];
-        return (int) Math.sqrt(dx * dx + dy * dy);
+        return Math.abs(dx)+ Math.abs(dy);
     }
 
     /**
