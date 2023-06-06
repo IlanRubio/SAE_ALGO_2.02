@@ -14,10 +14,10 @@ public class HBoxRoot extends HBox {
     private static GridPaneSolution chGridPaneSolution;
     private static VBoxAffichageSolution chVBoxAffichageSolution;
     private static VBoxAffichageScenario chVBoxAffichageScenario;
-    private Scenario chSc;
+    private static Scenario chSc;
 
-    private Joueur chJoueur = new Joueur();
-    private Solution chSol;
+    private static Joueur chJoueur = new Joueur();
+    private static Solution chSol;
 
     public HBoxRoot(){
         super(30);
@@ -30,4 +30,11 @@ public class HBoxRoot extends HBox {
         chVBoxAffichageScenario = new VBoxAffichageScenario(chSc.getScenario());
         getChildren().addAll(chVBoxAffichageScenario,chGridPaneSolution, chVBoxAffichageSolution);
     }
+
+    public static GridPaneSolution getChGridPaneSolution() {return chGridPaneSolution;}
+    public static VBoxAffichageScenario getChVBoxAffichageScenario() { return chVBoxAffichageScenario;}
+    public static VBoxAffichageSolution getChVBoxAffichageSolution(){return chVBoxAffichageSolution;}
+    public static Scenario getChSc(){return chSc;}
+    public static Joueur getChJoueur(){return chJoueur;}
+    public static Solution getChSolution(){return chSol;}
 }
