@@ -17,7 +17,7 @@ public class ApplicationAlgoRPG extends Application {
      */
     public void start(Stage stage) {
         HBoxRoot root = new HBoxRoot();
-        Scene scene = new Scene(root, 1000, 380);
+        Scene scene = new Scene(root, 1500, 380);
         stage.setScene(scene);
         stage.setTitle("Solution RPG");
         stage.show();
