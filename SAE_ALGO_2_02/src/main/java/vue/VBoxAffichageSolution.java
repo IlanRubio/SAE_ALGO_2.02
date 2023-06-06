@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import modele.Quete;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 /**
  * Classe VBoxAffichageSolution - représente le panneau d'affichage de l'ordre des quetes de la solution.
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class VBoxAffichageSolution extends VBox {
 
-    private Label chLabScenario = new Label("Scenario");
+    private Label chLabSolution = new Label("Solution");
     private TableView<Quete> chTable = new TableView<Quete>();
 
     /**
@@ -39,6 +40,19 @@ public class VBoxAffichageSolution extends VBox {
         chTable.getColumns().addAll(numColumn,intituleColumn,expColumn,dureeColumn);
 
         chTable.setPrefSize(320,290);
-        getChildren().addAll(chLabScenario,chTable);
+        getChildren().addAll(chLabSolution,chTable);
+        update(parQueteAcc);
+    }
+
+    /**
+     * Met à jour l'affichage du planning des réservations.
+     *
+     * @param parQuetes la liste des quetes de la solution
+     */
+    public void update (ArrayList <Quete> parQuetes){
+        chTable.getItems().clear();
+        for (Quete quete : parQuetes){
+            chTable.getItems().add(quete);
+        }
     }
 }
