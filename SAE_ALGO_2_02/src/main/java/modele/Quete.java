@@ -138,5 +138,26 @@ public class Quete {
     public String getIntitule(){
         return chIntitule;
     }
+
+    /**
+     * Retourne les préconditions de la quête.
+     *
+     * @return Les préconditions de la quête sous forme de String.
+     */
+    public String getPrecondAsString(){ return Arrays.toString(chPrecond);}
+
+    /**
+     * Retourne la position de la quête.
+     *
+     * @return La position de la quête sous forme de String.
+     */
+    public String getPosAsString(){ return Arrays.toString(chPos);}
+
+    /**
+     * Retourne l'expérience que tu gagnes de la quête.
+     *
+     * @return L'expérience que tu gagnes de la quête sous forme de string.
+     */
+    public String getExpAsString(){ return Integer.toString(chExp);}
 }
 
