@@ -1,7 +1,9 @@
 package vue;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import modele.Quete;
 
@@ -23,6 +25,20 @@ public class VBoxAffichageSolution extends VBox {
      * @param parQueteAcc les quetes de la solution à afficher
      */
     public VBoxAffichageSolution(ArrayList<Quete> parQueteAcc){
+        TableColumn<Quete, Integer> numColumn = new TableColumn<>("Numéro");
+        numColumn.setCellValueFactory(new PropertyValueFactory<>("chNumero"));
 
+        TableColumn <Quete, String> intituleColumn = new TableColumn<>("Intitule");
+        intituleColumn.setCellValueFactory(new PropertyValueFactory<>("chIntitule"));
+
+        TableColumn <Quete, Integer> expColumn = new TableColumn<>("Expérience");
+        expColumn.setCellValueFactory(new PropertyValueFactory<>("chExp"));
+
+        TableColumn <Quete, Integer> dureeColumn = new TableColumn<>("Durée");
+        dureeColumn.setCellValueFactory(new PropertyValueFactory<>("chDuree"));
+        chTable.getColumns().addAll(numColumn,intituleColumn,expColumn,dureeColumn);
+
+        chTable.setPrefSize(320,290);
+        getChildren().addAll(chLabScenario,chTable);
     }
 }
