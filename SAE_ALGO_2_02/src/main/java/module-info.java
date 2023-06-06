@@ -7,4 +7,5 @@ module com.example.sae_algo_2_02 {
     exports com.example.sae_algo_2_02;
     exports modele;
     exports vue;
+    exports controleur;
 }

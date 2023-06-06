@@ -1,5 +1,8 @@
 package vue;
 
+import controleur.Controleur;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.layout.HBox;
 import modele.Joueur;
 import modele.LectureFichierQuete;
@@ -8,7 +11,6 @@ import modele.Solution;
 
 import java.io.File;
 
-import static modele.LectureFichierQuete.lecture;
 
 public class HBoxRoot extends HBox {
     private static GridPaneSolution chGridPaneSolution;
@@ -18,6 +20,7 @@ public class HBoxRoot extends HBox {
 
     private static Joueur chJoueur = new Joueur();
     private static Solution chSol;
+    private static Controleur chControleur;
 
     public HBoxRoot(){
         super(30);
@@ -28,6 +31,7 @@ public class HBoxRoot extends HBox {
         chGridPaneSolution = new GridPaneSolution();
         chVBoxAffichageSolution = new VBoxAffichageSolution(chJoueur.getQueteAcc());
         chVBoxAffichageScenario = new VBoxAffichageScenario(chSc.getScenario());
+        chControleur = new Controleur();
         getChildren().addAll(chVBoxAffichageScenario,chGridPaneSolution, chVBoxAffichageSolution);
     }
 
@@ -37,4 +41,6 @@ public class HBoxRoot extends HBox {
     public static Scenario getChSc(){return chSc;}
     public static Joueur getChJoueur(){return chJoueur;}
     public static Solution getChSolution(){return chSol;}
+
+    public static Controleur getChControleur() { return chControleur;}
 }
