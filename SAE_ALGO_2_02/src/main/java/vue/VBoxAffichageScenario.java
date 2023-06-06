@@ -1,10 +1,13 @@
 package vue;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import modele.Quete;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
@@ -22,6 +25,41 @@ public class VBoxAffichageScenario extends VBox {
     * @param parTreeMapQuete les quetes du scenario à afficher
     */
     public VBoxAffichageScenario(TreeMap<Integer, Quete> parTreeMapQuete){
+        chTable.setPrefSize(620,500);
+        TableColumn<Quete, Integer> numeroCol = new TableColumn<>("Numero");
+        numeroCol.setCellValueFactory(new PropertyValueFactory<>("Numero"));
+
+        TableColumn<Quete, String> positionCol = new TableColumn<>("Position");
+        positionCol.setCellValueFactory(new PropertyValueFactory<>("PosAsString"));
+
+        TableColumn<Quete, String> preconditionCol = new TableColumn<>("Precondition");
+        preconditionCol.setCellValueFactory(new PropertyValueFactory<>("PrecondAsString"));
+
+        TableColumn<Quete, Integer> dureeCol = new TableColumn<>("Duree");
+        dureeCol.setCellValueFactory(new PropertyValueFactory<>("Duree"));
+
+        TableColumn<Quete, Integer> experienceCol = new TableColumn<>("Experience");
+        experienceCol.setCellValueFactory(new PropertyValueFactory<>("ExpAsString"));
+
+        TableColumn<Quete, String> intituleCol = new TableColumn<>("Intitule");
+        intituleCol.setResizable(true);
+        intituleCol.setCellValueFactory(new PropertyValueFactory<>("Intitule"));
+
+
+        chTable.getColumns().addAll(numeroCol, positionCol, preconditionCol, dureeCol, experienceCol, intituleCol);
+
+        getChildren().addAll(chLabScenario, chTable);
+        ArrayList<Quete> listeQuete=new ArrayList<Quete>();
+        for (Quete quete : parTreeMapQuete.values()) {
+            listeQuete.add(quete);
+        }
+        updateScenario(listeQuete);
 
     }
-}
+
+    public void updateScenario(ArrayList<Quete> parQuetes) {
+        chTable.getItems().clear();
+        for (Quete quete : parQuetes) {
+            chTable.getItems().add(quete);
+        }
+}}
