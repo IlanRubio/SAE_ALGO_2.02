@@ -56,5 +56,14 @@ public class Scenario {
     public TreeMap<Integer, Quete> getScenario() {
         return chTreeMapQuete;
     }
+    /**
+     * Retourne la taille du scenario.
+     *
+     * @param
+     * @return Le nombre de quete du scenario.
+     */
+    public int getNombreQuetes() {
+        return chTreeMapQuete.size();
+    }
 }
 
