@@ -46,6 +46,57 @@ public class Solution {
     }
 
     /**
+     * Vérifie si les préconditions d'une quête sont satisfaites pour un joueur donné.
+     *
+     * @param parJoueur Le joueur pour lequel vérifier les préconditions.
+     * @param parQuete La quête dont on vérifie les préconditions.
+     * @return true si toutes les préconditions de la quête sont satisfaites, false sinon.
+     */
+    private boolean preconditionRealise(Joueur parJoueur, Quete parQuete){
+        int[] preconditions = parQuete.getPrecond();
+
+        // Vérifier les deux premières préconditions
+        if (preconditions[1] == 0 && preconditions[0] != 0) {
+            // Si le deuxième indice est zéro et le premier n'est pas zéro,
+            // alors la quête a une précondition à vérifier
+            Quete quetePrecondition = chScenario.getQuete(preconditions[0]);;
+            if (!parJoueur.queteCompletee(quetePrecondition)) {
+                return false;
+            }
+        } else if (preconditions[1] != 0) {
+            // Si le deuxième indice n'est pas zéro,
+            // alors la quête a deux préconditions à vérifier
+            Quete quetePrecondition1 = chScenario.getQuete(preconditions[0]);;
+            Quete quetePrecondition2 = chScenario.getQuete(preconditions[1]);;
+            if (!parJoueur.queteCompletee(quetePrecondition1) && !parJoueur.queteCompletee(quetePrecondition2)) {
+                return false;
+            }
+        }
+
+        // Vérifier les deux dernières préconditions
+        if (preconditions[3] == 0 && preconditions[2] != 0) {
+            // Si le quatrième indice est zéro et le troisième n'est pas zéro,
+            // alors la quête a une précondition à vérifier
+            Quete quetePrecondition = chScenario.getQuete(preconditions[2]);
+            if (!parJoueur.queteCompletee(quetePrecondition)) {
+                return false;
+            }
+        } else if (preconditions[3] != 0) {
+            // Si le quatrième indice n'est pas zéro,
+            // alors la quête a deux préconditions à vérifier
+            Quete quetePrecondition1 = chScenario.getQuete(preconditions[2]);
+            Quete quetePrecondition2 = chScenario.getQuete(preconditions[3]);
+            if (!parJoueur.queteCompletee(quetePrecondition1) && !parJoueur.queteCompletee(quetePrecondition2)) {
+                return false;
+            }
+        }
+
+        // Toutes les préconditions sont satisfaites
+        return true;
+
+    }
+
+    /**
      * Effectue une recherche exhaustive pour compléter toutes les quetes possibles.
      *
      * @return Une liste d'entiers représentant toutes les quetes à réaliser et dans quel ordre.
