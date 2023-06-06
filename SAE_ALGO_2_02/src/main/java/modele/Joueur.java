@@ -104,4 +104,13 @@ public class Joueur {
     public ArrayList<Quete> getQueteAcc() {
         return chListeQueteAcc;
     }
+    /**
+     * Vérifie si une quête spécifique a été complétée.
+     *
+     * @param parQuete La quête à vérifier.
+     * @return true si la quête est dans la liste des quêtes complétées, false sinon.
+     */
+    public boolean queteCompletee(Quete parQuete){
+        return chListeQueteAcc.contains(parQuete);
+    }
 }
