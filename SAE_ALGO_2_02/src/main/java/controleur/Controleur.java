@@ -15,34 +15,38 @@ import java.util.ArrayList;
 
 public class Controleur implements EventHandler {
 
-    VBoxAffichageScenario affichageScenario = HBoxRoot.getChVBoxAffichageScenario();
-    GridPaneAffichageSolution affichageSolution = HBoxRoot.getChVBoxAffichageSolution();
-    LectureFichierQuete fichierScenario = HBoxRoot.getLectureFichierQuete();
-    GridPaneSolution solutionPane = HBoxRoot.getChGridPaneSolution();
+    VBoxAffichageScenario affichageScenario;
+    GridPaneAffichageSolution affichageSolution;
+    LectureFichierQuete fichierScenario;
+    GridPaneSolution solutionPane;
     Solution solution;
-    Joueur joueur = HBoxRoot.getChJoueur();
-    ArrayList<Quete> chListeQuete=new ArrayList<Quete>();
-
+    Joueur joueur;
     @Override
     public void handle(Event event) {
+        affichageScenario = HBoxRoot.getChVBoxAffichageScenario();
+        affichageSolution = HBoxRoot.getChVBoxAffichageSolution();
+        fichierScenario = HBoxRoot.getLectureFichierQuete();
+        solutionPane = HBoxRoot.getChGridPaneSolution();
+        joueur = HBoxRoot.getChJoueur();
         Scenario scenario = HBoxRoot.getChSc();
         GridPaneSolution solutionPane = HBoxRoot.getChGridPaneSolution();
         VBoxAffichageScenario afficheScenario= HBoxRoot.getChVBoxAffichageScenario();
 
         if (event.getSource() instanceof Button){
             int numScenario = solutionPane.getNumScenario();
-            Scenario scenar= fichierScenario.getScenario(numScenario);
-            ArrayList<Quete> quetes = fichierScenario.getQueteDuScenar(numScenario);
-            afficheScenario.update(numScenario,quetes);
-            if(solutionPane.getSolution()=="Efficace"){
+            Scenario scenar =  new Scenario();
+            scenar= fichierScenario.getScenario(numScenario);
+            if(solutionPane.getSolution().equals("Efficace")){
+                System.out.println(numScenario);
+                System.out.println(scenar);
                 joueur.reset();
-                solution = new Solution(scenario, joueur);
+                solution = new Solution(scenar, joueur);
                 solution.efficace();
                 affichageSolution.update(joueur, joueur.getQueteAcc());
             }
             else{
                 joueur.reset();
-                solution = new Solution(scenario, joueur);
+                solution = new Solution(scenar, joueur);
                 solution.exhaustive();
                 affichageSolution.update(joueur,joueur.getQueteAcc());
             }

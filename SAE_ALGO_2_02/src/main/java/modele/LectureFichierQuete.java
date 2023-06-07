@@ -77,6 +77,7 @@ public class LectureFichierQuete {
      * @return Le scénario correspondant au numéro de scénario spécifié.
      */
     public Scenario getScenario(int parNumScenario){
+        chScenario = new Scenario();
         File file = new File("SAE_ALGO_2_02"+File.separator+"Scenarios"+File.separator+SCENARIOTXT[parNumScenario]);
         return lecture(file);
     }
