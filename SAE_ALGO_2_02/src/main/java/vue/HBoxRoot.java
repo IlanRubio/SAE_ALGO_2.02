@@ -1,23 +1,16 @@
 package vue;
 
 import controleur.Controleur;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.layout.HBox;
 import modele.Joueur;
 import modele.LectureFichierQuete;
 import modele.Scenario;
 import modele.Solution;
 
-import java.io.File;
-
-import static modele.LectureFichierQuete.getChListScenario;
-import static modele.LectureFichierQuete.lectureScenarios;
-
 
 public class HBoxRoot extends HBox {
     private static GridPaneSolution chGridPaneSolution;
-    private static VBoxAffichageSolution chVBoxAffichageSolution;
+    private static GridPaneAffichageSolution chGridPaneAffichageSolution;
     private static VBoxAffichageScenario chVBoxAffichageScenario;
     private static Scenario chSc;
 
@@ -33,16 +26,16 @@ public class HBoxRoot extends HBox {
         //chSol = new Solution(chSc,chJoueur);
         //chSol.efficace();
         chGridPaneSolution = new GridPaneSolution();
-        chVBoxAffichageSolution = new VBoxAffichageSolution(chJoueur.getQueteAcc());
+        chGridPaneAffichageSolution = new GridPaneAffichageSolution(chJoueur);
         chLectureFichierQuete = new LectureFichierQuete();
         chVBoxAffichageScenario = new VBoxAffichageScenario(chLectureFichierQuete.lectureScenarios());
         chControleur = new Controleur();
-        getChildren().addAll(chVBoxAffichageScenario,chGridPaneSolution, chVBoxAffichageSolution);
+        getChildren().addAll(chVBoxAffichageScenario,chGridPaneSolution, chGridPaneAffichageSolution);
     }
 
     public static GridPaneSolution getChGridPaneSolution() {return chGridPaneSolution;}
     public static VBoxAffichageScenario getChVBoxAffichageScenario() { return chVBoxAffichageScenario;}
-    public static VBoxAffichageSolution getChVBoxAffichageSolution(){return chVBoxAffichageSolution;}
+    public static GridPaneAffichageSolution getChVBoxAffichageSolution(){return chGridPaneAffichageSolution;}
     public static Scenario getChSc(){return chSc;}
     public static Joueur getChJoueur(){return chJoueur;}
     public static Solution getChSolution(){return chSol;}

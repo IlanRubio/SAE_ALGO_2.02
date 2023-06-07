@@ -9,7 +9,7 @@ import modele.*;
 import vue.GridPaneSolution;
 import vue.HBoxRoot;
 import vue.VBoxAffichageScenario;
-import vue.VBoxAffichageSolution;
+import vue.GridPaneAffichageSolution;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -17,7 +17,7 @@ import java.util.TreeMap;
 public class Controleur implements EventHandler {
 
     VBoxAffichageScenario affichageScenario = HBoxRoot.getChVBoxAffichageScenario();
-    VBoxAffichageSolution affichageSolution = HBoxRoot.getChVBoxAffichageSolution();
+    GridPaneAffichageSolution affichageSolution = HBoxRoot.getChVBoxAffichageSolution();
     LectureFichierQuete fichierScenario = HBoxRoot.getLectureFichierQuete();
     GridPaneSolution solutionPane = HBoxRoot.getChGridPaneSolution();
     Solution solution;
