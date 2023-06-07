@@ -12,7 +12,6 @@ import vue.VBoxAffichageScenario;
 import vue.GridPaneAffichageSolution;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 public class Controleur implements EventHandler {
 
@@ -31,9 +30,22 @@ public class Controleur implements EventHandler {
         VBoxAffichageScenario afficheScenario= HBoxRoot.getChVBoxAffichageScenario();
 
         if (event.getSource() instanceof Button){
-            TreeMap<Integer, Quete> sc = scenario.getScenario();
-            for (Quete quete : sc.values()) {
-                chListeQuete.add(quete);
+            System.out.println("Hello");
+            int numScenario = solutionPane.getNumScenario();
+            Scenario scenar= fichierScenario.getScenario(numScenario);
+            ArrayList<Quete> quetes = fichierScenario.getQueteDuScenar(numScenario);
+            afficheScenario.update(numScenario,quetes);
+            if(solutionPane.getSolution()=="Efficace"){
+                joueur.reset();
+                solution = new Solution(scenario, joueur);
+                solution.efficace();
+                affichageSolution.update(joueur, joueur.getQueteAcc());
+            }
+            else{
+                joueur.reset();
+                solution = new Solution(scenario, joueur);
+                solution.exhaustive();
+                affichageSolution.update(joueur,joueur.getQueteAcc());
             }
         }
 
