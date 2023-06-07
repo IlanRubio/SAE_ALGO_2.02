@@ -87,12 +87,30 @@ public class GridPaneSolution extends GridPane {
         return comboBox;
     }
 
+    /**
+     * Réinitialise l'état du contrôleur en rétablissant les valeurs par défaut.
+     * Cette méthode sélectionne le premier bouton radio du groupe et réinitialise la valeur du choix de scénario.
+     */
     public void reset(){
         chRadioGroup.getToggles().get(0).setSelected(true);
         chChoixScenario.setValue(NUM_SCENARIO[0]);
     }
 
+    /**
+     * Renvoie le numéro du scénario sélectionné.
+     * @return Le numéro du scénario sélectionné.
+     */
     public int getNumScenario() {
         return (int) chChoixScenario.getValue();
+    }
+
+    /**
+     * Renvoie le type de solution sélectionné.
+     * @return Le type de solution sélectionné sous forme de chaîne de caractères.
+     */
+    public String getSolution() {
+        RadioButton radioButtonSelectionne = (RadioButton) chRadioGroup.getSelectedToggle();
+        String typeSolution = radioButtonSelectionne.getText();
+        return typeSolution;
     }
 }
