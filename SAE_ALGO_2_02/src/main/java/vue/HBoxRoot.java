@@ -11,6 +11,9 @@ import modele.Solution;
 
 import java.io.File;
 
+import static modele.LectureFichierQuete.getChListScenario;
+import static modele.LectureFichierQuete.lectureScenarios;
+
 
 public class HBoxRoot extends HBox {
     private static GridPaneSolution chGridPaneSolution;
@@ -21,16 +24,18 @@ public class HBoxRoot extends HBox {
     private static Joueur chJoueur = new Joueur();
     private static Solution chSol;
     private static Controleur chControleur;
+    private static LectureFichierQuete chLectureFichierQuete;
 
     public HBoxRoot(){
         super(30);
-        File file = new File("SAE_ALGO_2_02"+File.separator+"Scenarios"+File.separator+"scenario_0.txt");
-        chSc = LectureFichierQuete.lecture(file);
-        chSol = new Solution(chSc,chJoueur);
-        chSol.efficace();
+        //File file = new File("SAE_ALGO_2_02"+File.separator+"Scenarios"+File.separator+"scenario_0.txt");
+        //chSc = LectureFichierQuete.lecture(file);
+        //chSol = new Solution(chSc,chJoueur);
+        //chSol.efficace();
         chGridPaneSolution = new GridPaneSolution();
         chVBoxAffichageSolution = new VBoxAffichageSolution(chJoueur.getQueteAcc());
-        chVBoxAffichageScenario = new VBoxAffichageScenario(chSc.getScenario());
+        chLectureFichierQuete = new LectureFichierQuete();
+        chVBoxAffichageScenario = new VBoxAffichageScenario(chLectureFichierQuete.lectureScenarios());
         chControleur = new Controleur();
         getChildren().addAll(chVBoxAffichageScenario,chGridPaneSolution, chVBoxAffichageSolution);
     }
@@ -41,6 +46,7 @@ public class HBoxRoot extends HBox {
     public static Scenario getChSc(){return chSc;}
     public static Joueur getChJoueur(){return chJoueur;}
     public static Solution getChSolution(){return chSol;}
-
     public static Controleur getChControleur() { return chControleur;}
+    public static LectureFichierQuete getLectureFichierQuete() { return chLectureFichierQuete;
+    }
 }

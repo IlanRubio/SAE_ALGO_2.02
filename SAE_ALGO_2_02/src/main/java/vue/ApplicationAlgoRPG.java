@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Cette classe représente la deuxième application JavaFX.
+ * Cette classe représente l'application.
  * Elle hérite de la classe Application et implémente la méthode start.
  */
 public class ApplicationAlgoRPG extends Application {

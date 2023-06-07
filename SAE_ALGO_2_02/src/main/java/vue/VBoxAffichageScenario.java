@@ -5,10 +5,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import modele.LectureFichierQuete;
 import modele.Quete;
+import modele.Scenario;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
+
+import static modele.ConstanteScenario.SCENARIO;
 
 /**
  * Classe VBoxAffichageSolution - représente le panneau d'affichage des quetes du scenario.
@@ -22,9 +26,9 @@ public class VBoxAffichageScenario extends VBox {
     * Constructeur de la classe VBoxAffichageScenario.
     * Initialise les éléments graphiques et configure la table de scenario.
     *
-    * @param parTreeMapQuete les quetes du scenario à afficher
+    * @param parTreeMapScenario les quetes du scenario à afficher
     */
-    public VBoxAffichageScenario(TreeMap<Integer, Quete> parTreeMapQuete){
+    public VBoxAffichageScenario(TreeMap<Integer, ArrayList<Quete>> parTreeMapScenario){
         chTable.setPrefSize(620,500);
         TableColumn<Quete, Integer> numeroCol = new TableColumn<>("Numero");
         numeroCol.setCellValueFactory(new PropertyValueFactory<>("Numero"));
@@ -49,17 +53,19 @@ public class VBoxAffichageScenario extends VBox {
         chTable.getColumns().addAll(numeroCol, positionCol, preconditionCol, dureeCol, experienceCol, intituleCol);
 
         getChildren().addAll(chLabScenario, chTable);
-        ArrayList<Quete> listeQuete=new ArrayList<Quete>();
-        for (Quete quete : parTreeMapQuete.values()) {
-            listeQuete.add(quete);
-        }
-        updateScenario(listeQuete);
+        update(0,parTreeMapScenario.get(0));
 
     }
 
-    public void updateScenario(ArrayList<Quete> parQuetes) {
+
+    public void update(Integer parNumScenario, ArrayList<Quete> parQuetes) {
+        chLabScenario.setText(SCENARIO[parNumScenario]);
         chTable.getItems().clear();
         for (Quete quete : parQuetes) {
             chTable.getItems().add(quete);
         }
-}}
+        System.out.println(parQuetes);
+    }
+
+
+}

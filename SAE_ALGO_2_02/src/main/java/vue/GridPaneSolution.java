@@ -7,11 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-import static modele.ConstanteScenario.SCENARIO;
-import static modele.ConstanteScenario.SOLUTION;
+import static modele.ConstanteScenario.*;
 
 /**
  * Cette classe représente un formulaire de réservation sous forme de grille.
@@ -38,7 +34,7 @@ public class GridPaneSolution extends GridPane {
 
         Label labScenario = new Label("Scenario"); // Choix du Scenario
         this.add(labScenario,0,ligne,1,1);
-        chChoixScenario = peupleComboBox(SCENARIO);
+        chChoixScenario = peupleComboBox(NUM_SCENARIO);
         this.add(chChoixScenario,4,ligne++);
 
         Label labSolution = new Label("Solution"); // Choix de la Solution
@@ -64,6 +60,8 @@ public class GridPaneSolution extends GridPane {
         Button buttonGenerer = new Button("Generer");
         this.add(buttonGenerer,4,ligne);
 
+
+        chChoixScenario.setOnAction(HBoxRoot.getChControleur());
         buttonGenerer.setOnAction(HBoxRoot.getChControleur());
         buttonAnnuler.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -78,19 +76,23 @@ public class GridPaneSolution extends GridPane {
     /**
      * Crée et peuple une ComboBox avec les options fournies.
      *
-     * @param strings les options à ajouter à la ComboBox
+     * @param numScena les options à ajouter à la ComboBox
      * @return la ComboBox peuplée avec les options
      */
-    private ComboBox<String> peupleComboBox(String[]strings){
-        ComboBox <String> comboBox = new ComboBox<>();
-        for (String string:strings){
-            comboBox.getItems().add(string);
+    private ComboBox<Integer> peupleComboBox(Integer[] numScena){
+        ComboBox <Integer> comboBox = new ComboBox<>();
+        for (Integer numero:numScena){
+            comboBox.getItems().add(numero);
         }
         return comboBox;
     }
 
     public void reset(){
         chRadioGroup.getToggles().get(0).setSelected(true);
-        chChoixScenario.setValue(SCENARIO[0]);
+        chChoixScenario.setValue(NUM_SCENARIO[0]);
+    }
+
+    public int getNumScenario() {
+        return (int) chChoixScenario.getValue();
     }
 }
