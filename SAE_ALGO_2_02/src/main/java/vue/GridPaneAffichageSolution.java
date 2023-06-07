@@ -62,12 +62,13 @@ public class GridPaneAffichageSolution extends GridPane {
         add(chLabNbQueteJoueur, 3, ligne++);
 
 
-        TableColumn<Quete, Integer> numColumn = new TableColumn<>("Numéro des quetes : ");
+        TableColumn<Quete, Integer> numColumn = new TableColumn<>("Numéro des quetes dans l'ordre: ");
         numColumn.setCellValueFactory(new PropertyValueFactory<>("Numero"));
         chTable.getColumns().add(numColumn);
         add(chTable,0,ligne);
 
-        chTable.setPrefSize(100,200);
+        chTable.setPrefSize(200,200);
+        numColumn.setStyle("-fx-alignment: CENTER;");
         update(j1, j1.getQueteAcc());
 
     }
