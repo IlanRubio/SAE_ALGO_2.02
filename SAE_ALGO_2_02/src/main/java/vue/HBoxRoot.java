@@ -7,6 +7,8 @@ import modele.LectureFichierQuete;
 import modele.Scenario;
 import modele.Solution;
 
+import java.io.File;
+
 
 public class HBoxRoot extends HBox {
     private static GridPaneSolution chGridPaneSolution;
@@ -21,15 +23,15 @@ public class HBoxRoot extends HBox {
 
     public HBoxRoot(){
         super(30);
-        //File file = new File("SAE_ALGO_2_02"+File.separator+"Scenarios"+File.separator+"scenario_0.txt");
-        //chSc = LectureFichierQuete.lecture(file);
-        //chSol = new Solution(chSc,chJoueur);
-        //chSol.efficace();
-        chGridPaneSolution = new GridPaneSolution();
+        File file = new File("SAE_ALGO_2_02"+File.separator+"Scenarios"+File.separator+"scenario_0.txt");
+        chSc = LectureFichierQuete.lecture(file);
+        chSol = new Solution(chSc,chJoueur);
+        chSol.efficace();
         chGridPaneAffichageSolution = new GridPaneAffichageSolution(chJoueur);
         chLectureFichierQuete = new LectureFichierQuete();
         chVBoxAffichageScenario = new VBoxAffichageScenario(chLectureFichierQuete.lectureScenarios());
         chControleur = new Controleur();
+        chGridPaneSolution = new GridPaneSolution();
         getChildren().addAll(chVBoxAffichageScenario,chGridPaneSolution, chGridPaneAffichageSolution);
     }
 

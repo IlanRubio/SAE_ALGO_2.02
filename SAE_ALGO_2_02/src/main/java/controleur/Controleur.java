@@ -30,7 +30,6 @@ public class Controleur implements EventHandler {
         VBoxAffichageScenario afficheScenario= HBoxRoot.getChVBoxAffichageScenario();
 
         if (event.getSource() instanceof Button){
-            System.out.println("Hello");
             int numScenario = solutionPane.getNumScenario();
             Scenario scenar= fichierScenario.getScenario(numScenario);
             ArrayList<Quete> quetes = fichierScenario.getQueteDuScenar(numScenario);
@@ -52,7 +51,6 @@ public class Controleur implements EventHandler {
         if (event.getSource() instanceof ComboBox<?>){
             int numScenario = solutionPane.getNumScenario();
             ArrayList<Quete> quetes = fichierScenario.getQueteDuScenar(numScenario);
-            System.out.println(quetes);
             affichageScenario.update(numScenario,quetes);
         }
 

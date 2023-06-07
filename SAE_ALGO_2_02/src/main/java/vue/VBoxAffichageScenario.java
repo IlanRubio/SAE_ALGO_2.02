@@ -23,11 +23,11 @@ public class VBoxAffichageScenario extends VBox {
     private TableView<Quete> chTable = new TableView<Quete>();
 
     /**
-    * Constructeur de la classe VBoxAffichageScenario.
-    * Initialise les éléments graphiques et configure la table de scenario.
-    *
-    * @param parTreeMapScenario les quetes du scenario à afficher
-    */
+     * Constructeur de la classe VBoxAffichageScenario.
+     * Initialise les éléments graphiques et configure la table de scenario.
+     *
+     * @param parTreeMapScenario les quetes du scenario à afficher
+     */
     public VBoxAffichageScenario(TreeMap<Integer, ArrayList<Quete>> parTreeMapScenario){
         chTable.setPrefSize(620,500);
         TableColumn<Quete, Integer> numeroCol = new TableColumn<>("Numero");
@@ -64,7 +64,6 @@ public class VBoxAffichageScenario extends VBox {
         for (Quete quete : parQuetes) {
             chTable.getItems().add(quete);
         }
-        System.out.println(parQuetes);
     }
 
 
