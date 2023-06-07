@@ -37,8 +37,6 @@ public class Controleur implements EventHandler {
             Scenario scenar =  new Scenario();
             scenar= fichierScenario.getScenario(numScenario);
             if(solutionPane.getSolution().equals("Efficace")){
-                System.out.println(numScenario);
-                System.out.println(scenar);
                 joueur.reset();
                 solution = new Solution(scenar, joueur);
                 solution.efficace();
