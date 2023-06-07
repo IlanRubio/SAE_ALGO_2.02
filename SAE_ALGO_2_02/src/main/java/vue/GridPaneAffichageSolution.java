@@ -68,6 +68,7 @@ public class GridPaneAffichageSolution extends GridPane {
         add(chTable,0,ligne);
 
         chTable.setPrefSize(100,200);
+        update(j1, j1.getQueteAcc());
 
     }
 
