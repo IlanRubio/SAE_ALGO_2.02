@@ -34,6 +34,11 @@ public class LectureFichierQuete {
         return chScenario;
     }
 
+    /**
+     * Lit les fichiers de scénarios à partir de la liste SCENARIOTXT et retourne un TreeMap des scénarios.
+     * Chaque scénario est représenté par un numéro d'index et une liste de quêtes correspondantes.
+     * @return Un TreeMap contenant les scénarios avec leurs numéros d'index et les listes de quêtes associées.
+     */
     public static TreeMap<Integer, ArrayList<Quete>> lectureScenarios(){
         int numScenario = 0;
         for (String scenar : SCENARIOTXT){
@@ -50,12 +55,31 @@ public class LectureFichierQuete {
         return chListScenario;
     }
 
+    /**
+     * Renvoie le TreeMap des scénarios actuellement stockés.
+     * @return Le TreeMap contenant les scénarios avec leurs numéros d'index et les listes de quêtes associées.
+     */
     public static TreeMap<Integer, ArrayList<Quete>> getChListScenario(){
         return chListScenario;
     }
 
+    /**
+     * Renvoie la liste de quêtes correspondant au numéro de scénario spécifié.
+     * @param parNumScenario Le numéro de scénario pour lequel on souhaite récupérer les quêtes.
+     * @return La liste de quêtes correspondant au numéro de scénario spécifié.
+     */
     public ArrayList<Quete> getQueteDuScenar(int parNumScenario) {
         return chListScenario.get(parNumScenario);
+    }
+
+    /**
+     * Renvoie le scénario correspondant au numéro de scénario spécifié.
+     * @param parNumScenario Le numéro de scénario pour lequel on souhaite récupérer le scénario.
+     * @return Le scénario correspondant au numéro de scénario spécifié.
+     */
+    public Scenario getScenario(int parNumScenario){
+        File file = new File("SAE_ALGO_2_02"+File.separator+"Scenarios"+File.separator+parNumScenario);
+        return lecture(file);
     }
 }
 
