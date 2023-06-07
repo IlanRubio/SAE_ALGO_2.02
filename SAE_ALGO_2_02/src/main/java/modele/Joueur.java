@@ -113,4 +113,14 @@ public class Joueur {
     public boolean queteCompletee(Quete parQuete){
         return chListeQueteAcc.contains(parQuete);
     }
+
+    /**
+     * Réinitialise les champs du joueur
+     */
+    public void reset() {
+        chExpJ = 0;
+        chDureeJ = 0;
+        chListeQueteAcc = new ArrayList<Quete>();
+        chPositionJ = new int[2];
+    }
 }
