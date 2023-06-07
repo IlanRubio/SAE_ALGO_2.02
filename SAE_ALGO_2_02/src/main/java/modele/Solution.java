@@ -179,24 +179,5 @@ public class Solution {
             }
         }
         }
-
-
-    /**
-     * Effectue une recherche optimisée pour trouver la solution la plus rapide.
-     *
-     * @return Une liste d'entiers représentant toutes les quetes à réaliser et dans quel ordre.
-     */
-    public ArrayList<Integer> speedrun() {
-        return null;
-    }
-
-    /**
-     * Retourne une représentation sous forme de chaîne de caractères de l'objet Solution.
-     *
-     * @return La représentation de la solution.
-     */
-    public String toString() {
-        return null;
-    }
 }
 
